@@ -73,7 +73,13 @@
       return text.split('').sort().join('');
 
   }
-
+  function reverseString(str){
+      let stringRev ="";
+      for(let i= 0; i<str.length; i++){
+          stringRev = str[i]+stringRev;
+      }
+      return stringRev;
+  }
 
   function Task2()
   {
@@ -82,12 +88,13 @@
             str.lastIndexOf("(") + 1,
             str.lastIndexOf(")")
     );
+  
+    var res = str.split(mySubString).join(reverseString(mySubString));
 
+    res=res.split("(").join("");
+    res=res.split(")").join("");
 
-    var res = str.replace(mySubString,mySubString.split('').reverse().join(''));
-    res=res.replace('(','');
-    res=res.replace(')','')
-    document.getElementById("task2_textarea").value=res.replace('(','');
+    document.getElementById("task2_textarea").value=res;
 
   }
 </script>
