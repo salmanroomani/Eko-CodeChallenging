@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Eko CodeChallenging</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+<body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <h2> Task 1</h2>
+  <strong> Value : </strong> <input  readonly="readonly" type="text" id="task1_input" value="['AMOR', 'XISELA', 'JAMON', 'ROMA', 'OMAR', 'MORA', 'ESPONJA', 'RAMO', 'JAPONES', 'ARMO', 'MOJAN',
+'MARO', 'ORAM', 'MONJA', 'ALEXIS']" style="width: 700px"> <input type="button" Value="Click me" onclick="Task1()">
+  <br>  <br>
+ <strong> Result : </strong> <textarea id="task1_textarea" style="width: 700px; height : 100px" ></textarea>
+
+  <h2> Task 2</h2>
+  <strong> Value : </strong> <input type="text" id="task2_input" value="foo(bar)" style="width: 700px"> <input type="button" Value="Click me" onclick="Task2()">
+  <br>  <br>
+  <strong> Result : </strong> <textarea id="task2_textarea" style="width: 700px; height : 100px" "></textarea>
+
+
+<script>
+  function Task1()
+  {
+    var arr = ['AMOR', 'XISELA', 'JAMON', 'ROMA', 'OMAR', 'MORA', 'ESPONJA', 'RAMO', 'JAPONES', 'ARMO', 'MOJAN','MARO', 'ORAM', 'MONJA', 'ALEXIS'];
+    var Res=[];
+    for (i = 0; i < arr.length; i++) {
+      var str1=arr[i];
+      var check=0;
+      for(x=0;x<Res.length;x++)
+      {
+        var innerRes = Res[x].split('-');
+        var str2=innerRes[0];
+
+        var sortAlphabets1 = ConvertToArrayAndBackToString(str1);
+        var sortAlphabets2 = ConvertToArrayAndBackToString(str2);
+
+        if(sortAlphabets1 == sortAlphabets2)
+        {
+          Res[x]=Res[x]+"-"+str1;
+          check =1;
+        }
+
+
+
+      }
+      if(check ==0)
+      {
+        Res.push(str1);
+      }
+
+
+    }
+
+    var html="";
+    for(k=0;k<Res.length;k++)
+    {
+      html+=Res[k]+"\n";
+    }
+
+    document.getElementById("task1_textarea").value=html;
+  }
+  function ConvertToArrayAndBackToString(text)
+  {
+
+      return text.split('').sort().join('');
+
+  }
+
+
+  function Task2()
+  {
+   var str= document.getElementById("task2_input").value;
+    var mySubString = str.substring(
+            str.lastIndexOf("(") + 1,
+            str.lastIndexOf(")")
+    );
+
+
+    var res = str.replace(mySubString,mySubString.split('').reverse().join(''));
+    res=res.replace('(','');
+    res=res.replace(')','')
+    document.getElementById("task2_textarea").value=res.replace('(','');
+
+  }
+</script>
+</body>
+
+</html>
